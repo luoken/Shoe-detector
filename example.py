@@ -8,17 +8,20 @@ url = 'https://www.shopwss.com/mens-shoes/all-mens-shoes.htm?sort=S#pageSize=144
 page = requests.get(url)
 
 #beautiful soup will grab everything
-soup = BeautifulSoup(page.text, 'html5lib')
+soup = BeautifulSoup('wsspg1.txt', 'html.parser')
 
 a_tags_pi = soup.find_all('a', class_ = 'pi-link')
 
 
-print(a_tags_pi[0])
-print(len(a_tags_pi))
+# print(a_tags_pi[0])
+# print(len(a_tags_pi))
 
-img_lazy = soup.find_all('img', class_= 'pi-img lazy')
-for i in img_lazy:
-    print(i)
-    print('\n')
+# img_lazy = soup.find_all('img', class_= 'pi-img lazy')
+# for i in img_lazy:
+#     print(i)
+#     print('\n')
 
-print(len(img_lazy))
+# print(len(img_lazy))
+
+
+print(soup)
