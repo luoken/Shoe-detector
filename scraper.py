@@ -4,9 +4,9 @@ import urllib
 from bs4 import BeautifulSoup
 
 
-adidasUrl = "https://www.zappos.com/adidas-men-shoes/CK_XAVoBAcABAuICAwELGA.zso"
-nikeUrl = "https://www.zappos.com/nike-men-shoes/CK_XAVoBb8ABAuICAwELGA.zso"
-vansUrl =   "https://www.zappos.com/vans-men-shoes/CK_XAVoCqwHAAQLiAgMBCxg.zso"
+adidas = "https://www.zappos.com/adidas-men-shoes/CK_XAVoBAcABAuICAwELGA.zso"
+nike = "https://www.zappos.com/nike-men-shoes/CK_XAVoBb8ABAuICAwELGA.zso"
+vans =   "https://www.zappos.com/vans-men-shoes/CK_XAVoCqwHAAQLiAgMBCxg.zso"
 
 def saveImg(url, brand, n):
   name = brand + '-'  +  str(n) + '.jpg'
@@ -36,6 +36,7 @@ def scrape(url):
         saveImg(srcList[i], brandName, i)
   else:
     print("Error: Response Status Code != 200")
+    print("Error: Ask Jose why it broke.")
 
 # change url and run
-scrape(vansUrl)
+scrape(vans)
