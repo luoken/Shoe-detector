@@ -1,14 +1,21 @@
-Dependencies:
-  requests, lxml, urllib, bs4
+### Dependencies:
+---
+requests, lxml, urllib, bs4
 
-Make sure all packages are installed by running command:
-  pipenv install [packageName]
+### To install missing packages
+---
+`pipenv install [package-name]`
 
-To run script:
-  options: nike, vans, adidas
+### Running the script:
+---
 
-  head to last line with "scrape(vans)"
-    change it to one of the options
+head to last line of script where `scrape(vans)`
+  change it to one of the brands
+  
+    Brands:
+    1. nike
+    2. vans
+    3. adidas
 
-  run script:
-    pipenv run python scraper.py
+run script:
+  `pipenv run python scraper.py`
