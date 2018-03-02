@@ -31,10 +31,26 @@ def scrape(url, limit):
     else:
       brandName = 'vans'
 
-    # for i in range(len(pageList)):
+    # Verify limit is within bounds
+    if limit >= 100:
+      limit = 100
+      print("Can't scrape more than 100 items per page")
+      print("Scraping for 100 items per page")
+    
+    if limit <= 0:
+      print("Can't scrape negative number of shoes")
+      print("Enter a number >= 1")
+      return
+      
+    if limit > len(pageList):
+      limit = len(pageList)
+      print("Couldn't scrape " + str(limit) + " items")
+      print("There are only " + str(len(pageList)) + " items available to scrape on this page")
+
     for i in range(limit):
       url = pageList[i]
       scrapeProductPage("https://www.zappos.com" + url, brandName, i)
+
   else:
     print("Error: Response Status Code != 200")
     print("Error: Ask Jose why it broke.")
