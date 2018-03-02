@@ -82,4 +82,4 @@ def scrapeZappos(n, limit):
     print("Scraping from: " + nike + "?p=" + str(i))
     scrape(nike + "?p=" + str(i), limit)
 # (# pages, # shoes per page)
-scrapeZappos(1, 25);
+scrapeZappos(1, 50);
