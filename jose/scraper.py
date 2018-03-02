@@ -41,7 +41,7 @@ def scrape(url, limit):
       print("Can't scrape negative number of shoes")
       print("Enter a number >= 1")
       return
-      
+
     if limit > len(pageList):
       limit = len(pageList)
       print("Couldn't scrape " + str(limit) + " items")
@@ -70,7 +70,6 @@ def scrapeProductPage(url, brandName, i):
   else:
     print("Request to Product Page != 200")
 
-
 # change url and run
 def scrapeZappos(n, limit):
   for i in range(n):
@@ -83,4 +82,4 @@ def scrapeZappos(n, limit):
     print("Scraping from: " + nike + "?p=" + str(i))
     scrape(nike + "?p=" + str(i), limit)
 # (# pages, # shoes per page)
-scrapeZappos(1, 2);
+scrapeZappos(1, 25);
