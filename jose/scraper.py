@@ -9,7 +9,7 @@ nike = "https://www.zappos.com/nike-men-shoes/CK_XAVoBb8ABAuICAwELGA.zso"
 vans =   "https://www.zappos.com/vans-men-shoes/CK_XAVoCqwHAAQLiAgMBCxg.zso"
 
 def saveImg(url, name):
-  urllib.urlretrieve(url, name)
+  urllib.urlretrieve(url, "./images/" + name)
 
 
 def scrape(url, limit):
@@ -67,4 +67,4 @@ def scrapeZappos(n, limit):
     print("Scraping from: " + nike + "?p=" + str(i))
     scrape(nike + "?p=" + str(i), limit)
 # (# pages, # shoes per page)
-scrapeZappos(1, 10);
+scrapeZappos(1, 2);
