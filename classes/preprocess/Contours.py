@@ -5,15 +5,15 @@ from preprocess import Preprocess
 class Contours(Preprocess.Preprocess):
 
     retrieval_mode_list = {
-        1: cv2.RETR_EXTERNAL, # gets only extreme outer contours
-        2: cv2.RETR_LIST, # gets all contours with no hierarchy
-        3: cv2.RETR_CCOMP,
-        4: cv2.RETR_TREE, # gets all contours and reconstructs full hierarchy <-- using this one for now
-        5: cv2.RETR_FLOODFILL # ? don't use
+        1: "cv2.RETR_EXTERNAL", # gets only extreme outer contours
+        2: "cv2.RETR_LIST", # gets all contours with no hierarchy
+        3: "cv2.RETR_CCOMP",
+        4: "cv2.RETR_TREE", # gets all contours and reconstructs full hierarchy <-- using this one for now
+        5: "cv2.RETR_FLOODFILL" # ? don't use
     }
     approx_method_list = {
-        1: cv2.CHAIN_APPROX_NONE, # stores all the contour points
-        2: cv2.CHAIN_APPROX_SIMPLE # compresses contours <-- using this one for now
+        1: "cv2.CHAIN_APPROX_NONE", # stores all the contour points
+        2: "cv2.CHAIN_APPROX_SIMPLE" # compresses contours <-- using this one for now
     }
 
     def __init__(self, image_path, retrieval_mode, approx_method):
