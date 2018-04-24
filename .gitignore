@@ -30,3 +30,6 @@ dwsync.xml
 
 # Jose Image folder
 jose/images
+
+# utils
+utils/*.avi
