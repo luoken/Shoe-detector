@@ -69,6 +69,7 @@ def draw_rectangles(frame, frame_rectangle_list, x_offset=0, y_offset=0):
             2
         )
 
+
 # ****************************** /END METHODS/ ******************** #
 
 # ***************************************************************** #
@@ -82,9 +83,9 @@ if __name__ == '__main__':
     except:
         print("Using default video path since NO arg to was provided..")
         print(" ## videos/video_test.avi\n")
-        video_path = "videos/video_test.avi" # assuming this video/file exists
+        video_path = "videos/video_test.avi" # default
 
-    file_name = "./run_.avi" # reads this file in
+    file_name = "./run_.avi" # name of file it will create
     video = cv2.VideoCapture(video_path) # video object
 
     ## preprocess params
@@ -96,16 +97,16 @@ if __name__ == '__main__':
     ## for outputting video
     fps = 30.0 # change this to run at a slower speed
     fourcc  = cv2.VideoWriter_fourcc(*"M", "J", "P", "G") # create write object for mac
-    out = cv2.VideoWriter(file_name, fourcc, fps, (640, 480) ) # has to be frame size of video/img
+    video_res = (640, 480) # has to be frame size of video/img
+    out = cv2.VideoWriter(file_name, fourcc, fps, video_res ) # define writer object
 
     # loop runs until entire video is read or press q
     while(video.isOpened() ):
-        ret, frame = video.read()
-
+        
+        ret, frame = video.read() # frame is the 'image'
+        
         if(ret):
-            
-            # frame is the 'image'
-            ''' PREPROCESS START '''
+            ''' ------------------- PREPROCESS START ------------------- '''
             video_frame, mask = color_filter(frame, [lower_blue, upper_blue]) # color preprocess
 
             video_frame_gray = cv2.cvtColor(video_frame, cv2.COLOR_BGR2GRAY) # convert to gray
@@ -115,8 +116,9 @@ if __name__ == '__main__':
             frame_c, frame_contours, frame_heirarchy = cv2.findContours(frame_thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE) # calculate contours
             
             frame_copy = frame.copy() # so you don't write over the 'image'
-            cv2.drawContours(frame_copy, frame_contours, -1, threshold_color, 3) # to see what the contours look like
-            ''' /PREPROCESS END '''
+            
+            cv2.drawContours(frame_copy, frame_contours, -1, threshold_color, 3) # to see what the contours look like; -1 means draw all contours
+            ''' ------------------- /PREPROCESS END ------------------- '''
             
             # utilities
             frame_all_boxes = [cv2.boundingRect(c) for c in frame_contours] # draw boxes around boxes
@@ -125,7 +127,7 @@ if __name__ == '__main__':
 
             out.write(frame) # write to file
 
-            ''' VIEW MULTIPLE TEST SCREENS '''
+            ''' ------------------- VIEW MULTIPLE TEST SCREENS ------------------- '''
             cv2.imshow("original", frame) # view actual frame
             cv2.moveWindow("original", 0, 0) # last 2 params are x, y coords of screen
             
@@ -137,7 +139,7 @@ if __name__ == '__main__':
 
             cv2.imshow("grayscale", video_frame_gray) # grayscale frame
             cv2.moveWindow("grayscale", 640, 520)
-            ''' /VIEW END '''
+            ''' -------------------------- /VIEW END ----------------------------- '''
 
             if(cv2.waitKey(1) & 0xFF == ord("q") ):
                 break
