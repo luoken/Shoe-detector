@@ -126,17 +126,17 @@ if __name__ == '__main__':
             out.write(frame) # write to file
 
             ''' VIEW MULTIPLE TEST SCREENS '''
-            cv2.imshow("Object", frame) # view actual frame
-            cv2.moveWindow("Object", 0, 0) # last 2 params are x, y coords of screen
+            cv2.imshow("original", frame) # view actual frame
+            cv2.moveWindow("original", 0, 0) # last 2 params are x, y coords of screen
             
-            cv2.imshow("Object_thresh", frame_thresh) # threshold frame
-            cv2.moveWindow("Object_thresh", 640, 0)
+            cv2.imshow("thresholding", frame_thresh) # threshold frame
+            cv2.moveWindow("thresholding", 640, 0)
 
-            cv2.imshow("Object_contours", frame_copy)
-            cv2.moveWindow("Object_contours", 0, 520)
+            cv2.imshow("contours", frame_copy)
+            cv2.moveWindow("contours", 0, 520)
 
-            cv2.imshow("Object_gray", video_frame_gray) # grayscale frame
-            cv2.moveWindow("Object_gray", 640, 520)
+            cv2.imshow("grayscale", video_frame_gray) # grayscale frame
+            cv2.moveWindow("grayscale", 640, 520)
             ''' /VIEW END '''
 
             if(cv2.waitKey(1) & 0xFF == ord("q") ):
