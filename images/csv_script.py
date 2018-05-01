@@ -11,14 +11,15 @@ def update_csv_file():
         for dirName, subdirList, fileList in os.walk('./'):
             for filename in fileList:
                 label_name = dirName[1:] + "/" + filename
-                if "positive_images" in label_name:
-                    # writerow for 1
-                    label_name = dirName[1:] + "/" + filename
-                    writer.writerow([label_name] + ["1"])
-                elif "negative_images" in label_name:
-                    # writerow for 0
-                    label_name = dirName[1:] + "/" + filename
-                    writer.writerow([label_name] + ["0"])
+                if ".jpg" in label_name:
+                    if "positive_images" in label_name:
+                        # writerow for 1
+                        label_name = dirName[1:] + "/" + filename
+                        writer.writerow([label_name] + ["1"])
+                    elif "negative_images" in label_name:
+                        # writerow for 0
+                        label_name = dirName[1:] + "/" + filename
+                        writer.writerow([label_name] + ["0"])
 
 
 update_csv_file()
